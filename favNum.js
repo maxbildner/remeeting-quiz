@@ -3,14 +3,21 @@
 // user: remeeting
 // pw: ****
 
+// QUESTION 1: HACK
+// What's my favorite 3-digit number?
+
+// SOLUTION: 
+// Naive/brute force- continually make HTTP GET requests to the submition action
+// endpoint (starting with 100 as initial query param, and incrementing by 1) 
+// until we get the correct response
+
 let requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
 
-
-// initial guess = 109
-function guessFavNumber(guess=109) {
+// initial guess = 100
+function guessFavNumber(guess=100) {
   
   let URL = `https://remeeting.com/quiz/python_script.cgi?number=${guess}`;
 
@@ -22,11 +29,9 @@ function guessFavNumber(guess=109) {
       
       // convert response obj to promise
       responsePromise = response.text();
-      // console.log(responsePromise);
   
       // when promise is fulfilled, check if number is correct
       responsePromise.then(textResult => {
-        // console.log(textResult);
         
         // if html text contains the word "Sorry", number is incorrect
         let isIncorrect = textResult.includes("Sorry");
