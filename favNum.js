@@ -41,7 +41,7 @@ function guessFavNumber(guess=100) {
 
           // recursively/continuously make fetches until we get correct number
           // wait 10 seconds before making next call (incase there's rate limiting in place)
-          setTimeout(guessFavNumber(guess + 1), 10000);
+          setTimeout(()=> guessFavNumber(guess + 1), 10000);
 
         } else {
           console.log(guess + " is CORRECT!!!!");
